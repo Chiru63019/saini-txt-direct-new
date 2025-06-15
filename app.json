@@ -9,7 +9,6 @@
     ],
     "repository": "https://github.com/Chiru63019/saini-txt-direct-new",
     "success_url": "https://telegram.me/skillwithchiru",
-    "stack": "heroku-24",
     "env": {
         "API_ID": {
             "description": "enter_your_api_id",
