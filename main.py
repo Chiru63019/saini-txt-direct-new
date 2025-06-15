@@ -48,7 +48,7 @@ bot = Client(
     bot_token=BOT_TOKEN
 )
 
-Path to your .so file (same folder as this script)
+#Path to your .so file (same folder as this script)
 so_path = os.path.join(os.getcwd(), "chiru.so")
 
 # Load the shared object as a Python module named "sainiji"
