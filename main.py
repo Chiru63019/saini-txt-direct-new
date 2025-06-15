@@ -9,7 +9,7 @@ import asyncio
 import requests
 import subprocess
 import urllib
-import new_api as sainiji
+
 import urllib.parse
 import yt_dlp
 import tgcrypto
@@ -47,6 +47,14 @@ bot = Client(
     api_hash=API_HASH,
     bot_token=BOT_TOKEN
 )
+
+Path to your .so file (same folder as this script)
+so_path = os.path.join(os.getcwd(), "chiru.so")
+
+# Load the shared object as a Python module named "sainiji"
+spec = importlib.util.spec_from_file_location("sainiji", so_path)
+sainiji = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(sainiji)
 
 cookies_file_path = os.getenv("cookies_file_path", "youtube_cookies.txt")
 api_url = "http://master-api-v3.vercel.app/"
