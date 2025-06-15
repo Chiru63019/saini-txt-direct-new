@@ -1,34 +1,34 @@
 {
-    "name": "saini-txt-bot",
-    "description": "𝑻𝒆𝒙𝒕 𝑳𝒆𝒆𝒄𝒉 𝑽𝒊𝒅𝒆𝒐 𝑬𝒙𝒕𝒓𝒂𝒄𝒕𝒐𝒓 𝑭𝒐𝒓 𝑻𝒆𝒍𝒆𝒈𝒓𝒂𝒎",
-    "logo": "https://tinypic.host/images/2025/04/28/IMG_20250428_085026_585.jpg",
+    "name": "Drm Uploader By 🅱🅴🅰🆂🆃 👑",
+    "description": "DRM Uploader",
+    "logo": "https://tinypic.host/image/Screenshot-2025-03-19-06-40-21-30.3gKoOw",
     "keywords": [
         "text-video",
         "video-extract",
         "pyrogram"
     ],
-    "repository": "https://github.com/nikhilsainiop/saini-txt-direct",
-    "success_url": "https://t.me/saini_contact_bot",
+    "repository": "https://github.com/Chiru63019/Classplusdrm",
+    "success_url": "https://telegram.me/skillwithchiru",
     "stack": "container",
     "env": {
         "API_ID": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑨𝒑𝒊 𝑰𝑫",
-            "value": "",
+            "description": "enter_your_api_id",
+            "value": "26468828",
             "required": true
         },
         "API_HASH": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑨𝒑𝒊 𝑯𝒂𝒔𝒉",
-            "value": "",
+            "description": "enter_your_api_harsh",
+            "value": "4693513c08d1ac6af15f95b116c29478",
             "required": true
         },
         "BOT_TOKEN": {
-            "description": "𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑩𝒐𝒕 𝑻𝒐𝒌𝒆𝒏",
+            "description": "Enter your bot token",
             "value": "",
             "required": true
         },
         "token_cp":{
-            "description": "𝘌𝘯𝘵𝘦𝘳 𝘞𝘰𝘳𝘬𝘪𝘯𝘨 𝘊𝘭𝘢𝘴𝘴𝘱𝘭𝘶𝘴 𝘛𝘰𝘬𝘦𝘯",
-            "value": "eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9r",
+            "description": "Enter your classplus token",
+            "value": "",
             "required": true
         }
     },
