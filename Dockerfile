@@ -27,7 +27,8 @@ RUN apk add --no-cache \
     cp mp4decrypt /usr/local/bin/ &&\
     cd ../.. && \
     rm -rf Bento4-1.6.0-639 v1.6.0-639.zip
-
+# 🔧 Compile chiru.c into chiru.so
+RUN gcc -shared -fPIC chiru.c -o chiru.so
 # Install Python dependencies
 RUN pip3 install --no-cache-dir --upgrade pip \
     && pip3 install --no-cache-dir --upgrade -r sainibots.txt \
