@@ -48,13 +48,18 @@ bot = Client(
     bot_token=BOT_TOKEN
 )
 
-#Path to your .so file (same folder as this script)
-so_path = os.path.join(os.getcwd(), "chiru.so")
+import ctypes
+import os
 
-# Load the shared object as a Python module named "sainiji"
-spec = importlib.util.spec_from_file_location("sainiji", so_path)
-sainiji = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(sainiji)
+# Get absolute path to chiru.so
+so_path = os.path.join(os.path.dirname(__file__), "chiru.so")
+
+# Load the shared object file
+try:
+    sainiji = ctypes.CDLL(so_path)
+    print("✅ chiru.so loaded successfully")
+except OSError as e:
+    print("❌ Failed to load chiru.so:", e)
 
 cookies_file_path = os.getenv("cookies_file_path", "youtube_cookies.txt")
 api_url = "http://master-api-v3.vercel.app/"
