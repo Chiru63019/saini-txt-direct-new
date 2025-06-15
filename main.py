@@ -9,7 +9,7 @@ import asyncio
 import requests
 import subprocess
 import urllib
-
+import importlib.util
 import urllib.parse
 import yt_dlp
 import tgcrypto
