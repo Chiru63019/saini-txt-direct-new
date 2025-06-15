@@ -9,6 +9,7 @@ import asyncio
 import requests
 import subprocess
 import urllib
+import new_api as sainiji
 import urllib.parse
 import yt_dlp
 import tgcrypto
@@ -575,13 +576,10 @@ async def txt_handler(bot: Client, m: Message):
     else:
         CR = raw_text3
 
-    await editable.edit("`🔹Enter Working PW Token For 𝐌𝐏𝐃 𝐔𝐑𝐋\n🔹Please wait..10sec...⏳ for use default`")
-    try:
-        input4: Message = await bot.listen(editable.chat.id, timeout=10)
-        raw_text4 = input4.text
-        await input4.delete(True)
-    except asyncio.TimeoutError:
-        raw_text4 = 'WOTKING_PW_TOKEN'
+    await editable.edit("Enter Classplus Working Token")
+    input4: Message = await bot.listen(editable.chat.id, timeout=10)
+    token = input4.text
+    await input4.delete(True)
 
     await editable.edit(f"**🔹Send the Video Thumb URL\n🔹Please wait..20sec...⏳ for use default**")
     try:
@@ -660,25 +658,14 @@ async def txt_handler(bot: Client, m: Message):
                 url = mpd
                 keys_string = " ".join([f"--key {key}" for key in keys])
 
-            elif "tencdn.classplusapp" in url:
-                headers = {'Host': 'api.classplusapp.com', 'x-access-token': f'{token_cp}', 'user-agent': 'Mobile-Android', 'app-version': '1.4.37.1', 'api-version': '18', 'device-id': '5d0d17ac8b3c9f51', 'device-details': '2848b866799971ca_2848b8667a33216c_SDK-30', 'accept-encoding': 'gzip'}
-                params = (('url', f'{url}'))
-                response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
-                url = response.json()['url']  
-
-            elif 'videos.classplusapp' in url or "tencdn.classplusapp" in url or "webvideos.classplusapp.com" in url:
-                url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': f'{token_cp}'}).json()['url']
+            elif any(x in url for x in ["tencdn.classplusapp", "videos.classplusapp", "media-cdn.classplusapp.com", "media-cdn-alisg.classplusapp.com", "media-cdn-a.classplusapp.com"]): 
+                url = sainiji.saini_chiru_johny(token, url)
             
-            elif 'media-cdn.classplusapp.com' in url or 'media-cdn-alisg.classplusapp.com' in url or 'media-cdn-a.classplusapp.com' in url: 
-                headers = { 'x-access-token': f'{token_cp}',"X-CDN-Tag": "empty"}
-                response = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers=headers)
-                url   = response.json()['url']
-
             elif "childId" in url and "parentId" in url:
-                url = f"https://anonymousrajputplayer-9ab2f2730a02.herokuapp.com/pw?url={url}&token={raw_text4}"
+                url = f"https://anonymousrajputplayer-9ab2f2730a02.herokuapp.com/pw?url={url}&token={token}"
                            
             elif "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
-                url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={raw_text4}"
+                url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={token}"
 
             if ".pdf*" in url:
                 url = f"https://dragoapi.vercel.app/pdf/{url}"
@@ -899,11 +886,11 @@ async def text_handler(bot: Client, m: Message):
     except Exception:
             res = "UN"
           
-    #await editable.edit("<pre><code>Enter Your PW Token For 𝐌𝐏𝐃 𝐔𝐑𝐋\nOtherwise send anything</code></pre>")
-    #input4: Message = await bot.listen(editable.chat.id, filters=filters.text & filters.user(m.from_user.id))
-    #raw_text4 = input4.text
-    #await input4.delete(True)
-    #await editable.delete(True)
+    await editable.edit("<pre><code>Enter Your PW Token For 𝐌𝐏𝐃 𝐔𝐑𝐋\nOtherwise send anything</code></pre>")
+    input4: Message = await bot.listen(editable.chat.id, filters=filters.text & filters.user(m.from_user.id))
+    token = input4.text
+    await input4.delete(True)
+    
 
     raw_text4 = "PWTOKEN"
     thumb = "/d"
@@ -939,27 +926,16 @@ async def text_handler(bot: Client, m: Message):
                 url = mpd
                 keys_string = " ".join([f"--key {key}" for key in keys])
 
-            elif "tencdn.classplusapp" in url:
-                headers = {'Host': 'api.classplusapp.com', 'x-access-token': f'{token_cp}', 'user-agent': 'Mobile-Android', 'app-version': '1.4.37.1', 'api-version': '18', 'device-id': '5d0d17ac8b3c9f51', 'device-details': '2848b866799971ca_2848b8667a33216c_SDK-30', 'accept-encoding': 'gzip'}
-                params = (('url', f'{url}'))
-                response = requests.get('https://api.classplusapp.com/cams/uploader/video/jw-signed-url', headers=headers, params=params)
-                url = response.json()['url']  
-
-            elif 'videos.classplusapp' in url or "tencdn.classplusapp" in url or "webvideos.classplusapp.com" in url:
-                url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': f'{token_cp}'}).json()['url']
-            
-            elif 'media-cdn.classplusapp.com' in url or 'media-cdn-alisg.classplusapp.com' in url or 'media-cdn-a.classplusapp.com' in url: 
-                headers = { 'x-access-token': f'{token_cp}',"X-CDN-Tag": "empty"}
-                response = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers=headers)
-                url   = response.json()['url']
+            elif any(x in url for x in ["tencdn.classplusapp", "videos.classplusapp", "media-cdn.classplusapp.com", "media-cdn-alisg.classplusapp.com", "media-cdn-a.classplusapp.com"]): 
+                url = sainiji.saini_chiru_johny(token, url)
 
             elif "childId" in url and "parentId" in url:
-                url = f"https://pwplayer-38c1ae95b681.herokuapp.com/pw?url={url}&token={raw_text4}"
+                url = f"https://pwplayer-38c1ae95b681.herokuapp.com/pw?url={url}&token={token}"
                            
             elif "d1d34p8vz63oiq" in url or "sec1.pw.live" in url:
                 vid_id =  url.split('/')[-2]
                 #url = f"https://pwplayer-38c1ae95b681.herokuapp.com/pw?url={url}&token={raw_text4}"
-                url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={raw_text4}"
+                url = f"https://anonymouspwplayer-b99f57957198.herokuapp.com/pw?url={url}?token={token}"
                 #url =  f"{api_url}pw-dl?url={url}&token={raw_text4}&authorization={api_token}&q={raw_text2}"
                 #url = f"https://dl.alphacbse.site/download/{vid_id}/master.m3u8"
             
